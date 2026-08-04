@@ -80,8 +80,8 @@ src/
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/trader-risk-dashboard.git
-cd trader-risk-dashboard
+git clone https://github.com/Raj9229/trader-risk-dashbord.git
+cd trader-risk-dashbord
 npm install
 npm run dev
 ```
