@@ -7,13 +7,9 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { formatCurrency } from '../utils/formatCurrency';
 
 function EquityChart({ data }) {
-  const currencyFormatter = (value) => new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(value);
 
   return (
     <section className="flex h-[260px] flex-col rounded-2xl border border-slate-800 bg-slate-900/80 p-4 shadow-sm sm:h-[300px] sm:p-5 lg:h-[320px] lg:p-6">
@@ -36,7 +32,7 @@ function EquityChart({ data }) {
             <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
             <XAxis dataKey="tradeNumber" stroke="#94a3b8" tickLine={false} axisLine={false} />
             <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} tickFormatter={(value) => `$${value / 1000}k`} />
-            <Tooltip formatter={(value) => currencyFormatter(value)} />
+            <Tooltip formatter={(value) => formatCurrency(value)} />
             <Area
               type="monotone"
               dataKey="balance"

@@ -11,8 +11,9 @@ import generateEquityCurve from '../utils/generateEquityCurve';
 
 function Dashboard() {
   const calculatedStats = calculateStats(trades);
+  const currentBalance = account.startingBalance + calculatedStats.totalPnL;
   const stats = {
-    currentBalance: account.currentBalance,
+    currentBalance,
     totalPnL: calculatedStats.totalPnL,
     winRate: calculatedStats.winRate,
     winningTrades: calculatedStats.winningTrades,

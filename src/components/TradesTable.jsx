@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { formatSignedCurrency } from '../utils/formatCurrency';
 
 function TradesTable({ trades }) {
   const [filter, setFilter] = useState('All');
@@ -25,12 +26,6 @@ function TradesTable({ trades }) {
 
     return rows;
   }, [filter, rows]);
-
-  const formatCurrency = (value) => new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(value);
 
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-sm">
@@ -82,7 +77,7 @@ function TradesTable({ trades }) {
                   </span>
                 </td>
                 <td className={`whitespace-nowrap px-4 py-3 font-medium sm:px-6 ${row.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                  {row.pnl >= 0 ? `+${formatCurrency(row.pnl)}` : formatCurrency(row.pnl)}
+                  {formatSignedCurrency(row.pnl)}
                 </td>
               </tr>
             ))}

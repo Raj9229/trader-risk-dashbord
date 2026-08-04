@@ -1,18 +1,8 @@
-import { DollarSign, Percent, Shield, TrendingUp } from 'lucide-react';
+import { DollarSign, Percent, Shield, TrendingDown, TrendingUp } from 'lucide-react';
 import StatCard from './StatCard';
+import { formatCurrency, formatSignedCurrency } from '../utils/formatCurrency';
 
 function StatsGrid({ stats }) {
-  const formatCurrency = (value) => new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(value);
-
-  const formatSignedCurrency = (value) => {
-    const formatted = formatCurrency(value);
-    return value >= 0 ? `+${formatted}` : formatted;
-  };
-
   const formatPercent = (value) => `${value.toFixed(1)}%`;
 
   const cards = [
@@ -29,6 +19,34 @@ function StatsGrid({ stats }) {
       change: stats.totalPnL >= 0 ? 'Momentum remains positive' : 'Needs tighter execution',
       changeType: stats.totalPnL >= 0 ? 'positive' : 'negative',
       icon: <TrendingUp className="h-4 w-4" />,
+    },
+    {
+      title: 'Winning Trades',
+      value: stats.winningTrades,
+      change: 'Positive trade count',
+      changeType: 'positive',
+      icon: <TrendingUp className="h-4 w-4" />,
+    },
+    {
+      title: 'Losing Trades',
+      value: stats.losingTrades,
+      change: 'Negative trade count',
+      changeType: 'negative',
+      icon: <TrendingDown className="h-4 w-4" />,
+    },
+    {
+      title: 'Largest Winning Trade',
+      value: formatSignedCurrency(stats.largestWin),
+      change: 'Best single trade',
+      changeType: 'positive',
+      icon: <DollarSign className="h-4 w-4" />,
+    },
+    {
+      title: 'Largest Losing Trade',
+      value: formatSignedCurrency(stats.largestLoss),
+      change: 'Largest draw from a trade',
+      changeType: 'negative',
+      icon: <DollarSign className="h-4 w-4" />,
     },
     {
       title: 'Win Rate',

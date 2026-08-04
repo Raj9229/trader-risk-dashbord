@@ -1,3 +1,5 @@
+import { formatCurrency } from '../utils/formatCurrency';
+
 function ProgressBar({ value, max, tone }) {
   const percentage = max > 0 ? Math.min((value / max) * 100, 100) : 0;
   const toneClasses = {
@@ -31,25 +33,25 @@ function RiskOverview({ risk }) {
   const items = [
     {
       label: 'Current Drawdown',
-      value: `$${risk.currentDrawdown.toLocaleString()}`,
+      value: formatCurrency(risk.currentDrawdown),
       valueForProgress: risk.currentDrawdown,
       max: 10000,
     },
     {
       label: 'Remaining Drawdown',
-      value: `$${risk.remainingDrawdown.toLocaleString()}`,
+      value: formatCurrency(risk.remainingDrawdown),
       valueForProgress: risk.remainingDrawdown,
       max: 10000,
     },
     {
       label: 'Daily Loss',
-      value: `$${risk.currentDayLoss.toLocaleString()}`,
+      value: formatCurrency(risk.currentDayLoss),
       valueForProgress: risk.currentDayLoss,
       max: 5000,
     },
     {
       label: 'Remaining Daily Loss',
-      value: `$${risk.remainingDailyLoss.toLocaleString()}`,
+      value: formatCurrency(risk.remainingDailyLoss),
       valueForProgress: risk.remainingDailyLoss,
       max: 5000,
     },
