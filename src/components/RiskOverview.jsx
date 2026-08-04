@@ -1,10 +1,14 @@
-function RiskOverview() {
+function RiskOverview({ risk }) {
   const items = [
-    { label: 'Current Drawdown', value: '$24,500', progress: 68 },
-    { label: 'Remaining Drawdown', value: '$12,000', progress: 42 },
-    { label: 'Daily Loss', value: '$3,200', progress: 31 },
-    { label: 'Remaining Daily Loss', value: '$6,800', progress: 58 },
+    { label: 'Current Drawdown', value: `$${risk.currentDrawdown.toLocaleString()}`, progress: 68 },
+    { label: 'Remaining Drawdown', value: `$${risk.remainingDrawdown.toLocaleString()}`, progress: 42 },
+    { label: 'Current Day Loss', value: `$${risk.currentDayLoss.toLocaleString()}`, progress: 31 },
+    { label: 'Remaining Daily Loss', value: `$${risk.remainingDailyLoss.toLocaleString()}`, progress: 58 },
   ];
+
+  const badgeClass = risk.riskStatus === 'Safe'
+    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
+    : 'border-rose-500/30 bg-rose-500/10 text-rose-400';
 
   return (
     <section className="rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-sm">
@@ -13,8 +17,8 @@ function RiskOverview() {
           <h2 className="text-lg font-semibold text-white">Risk Overview</h2>
           <p className="mt-1 text-sm text-slate-400">Portfolio exposure and drawdown health</p>
         </div>
-        <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-400">
-          Stable
+        <span className={`rounded-full border px-3 py-1 text-sm font-medium ${badgeClass}`}>
+          {risk.riskStatus}
         </span>
       </div>
 
