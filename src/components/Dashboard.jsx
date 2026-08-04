@@ -7,6 +7,7 @@ import trades from '../data/trades';
 import account from '../data/account';
 import calculateStats from '../utils/calculateStats';
 import calculateRisk from '../utils/calculateRisk';
+import generateEquityCurve from '../utils/generateEquityCurve';
 
 function Dashboard() {
   const calculatedStats = calculateStats(trades);
@@ -20,17 +21,18 @@ function Dashboard() {
     largestLoss: calculatedStats.largestLoss,
   };
   const risk = calculateRisk(account, stats);
+  const equityCurve = generateEquityCurve(account.startingBalance, trades);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Header />
 
-      <main className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <main className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         <StatsGrid stats={stats} />
 
-        <section className="grid gap-6 lg:grid-cols-2">
+        <section className="grid gap-5 xl:grid-cols-2">
           <RiskOverview risk={risk} />
-          <EquityChart />
+          <EquityChart data={equityCurve} />
         </section>
 
         <TradesTable />
