@@ -12,7 +12,7 @@ https://your-vercel-app-url.vercel.app
 
 ## GitHub Repository
 
-https://github.com/Raj9229/trader-risk-dashboard
+https://github.com/Raj9229/trader-risk-dashbord
 
 ## Overview
 
