@@ -8,7 +8,7 @@
 
 ## Live Demo
 
-https://your-vercel-app-url.vercel.app
+https://trader-risk-dashbord.vercel.app/
 
 ## GitHub Repository
 
