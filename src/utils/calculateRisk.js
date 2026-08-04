@@ -1,4 +1,4 @@
-function calculateRisk(account, stats) {
+function calculateRisk(account) {
   // Current drawdown is the difference between the starting balance and the current balance.
   const currentDrawdown = account.startingBalance - account.currentBalance;
 
@@ -12,8 +12,15 @@ function calculateRisk(account, stats) {
   // Remaining daily loss is the daily loss allowance left before hitting the limit.
   const remainingDailyLoss = account.dailyLossLimit - currentDayLoss;
 
-  // Risk status is set based on whether the current drawdown is still within the allowed limit.
-  const riskStatus = currentDrawdown <= account.maximumDrawdown ? 'Safe' : 'High Risk';
+  // Risk status is set based on how close drawdown is to the allowed limit.
+  const drawdownRatio = account.maximumDrawdown > 0 ? currentDrawdown / account.maximumDrawdown : 0;
+  let riskStatus = 'Safe';
+
+  if (drawdownRatio >= 0.85) {
+    riskStatus = 'High Risk';
+  } else if (drawdownRatio >= 0.7) {
+    riskStatus = 'Approaching Limit';
+  }
 
   return {
     currentDrawdown,
