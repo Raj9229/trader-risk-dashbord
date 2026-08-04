@@ -15,20 +15,32 @@ function ProgressBar({ value, max, tone }) {
   );
 }
 
-function getBadgeStyles(status) {
+function getStatusTone(status) {
   if (status === 'Safe') {
-    return 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400';
+    return 'safe';
   }
 
   if (status === 'Approaching Limit') {
-    return 'border-amber-500/30 bg-amber-500/10 text-amber-400';
+    return 'warning';
   }
 
-  return 'border-rose-500/30 bg-rose-500/10 text-rose-400';
+  return 'danger';
+}
+
+function getBadgeStyles(status) {
+  const tone = getStatusTone(status);
+
+  const toneClasses = {
+    safe: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+    warning: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+    danger: 'border-rose-500/30 bg-rose-500/10 text-rose-400',
+  };
+
+  return toneClasses[tone];
 }
 
 function RiskOverview({ risk }) {
-  const tone = risk.riskStatus === 'High Risk' ? 'danger' : risk.riskStatus === 'Approaching Limit' ? 'warning' : 'safe';
+  const tone = getStatusTone(risk.riskStatus);
 
   const items = [
     {

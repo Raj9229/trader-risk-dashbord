@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Table } from 'lucide-react';
 import { formatSignedCurrency } from '../utils/formatCurrency';
 
 function TradesTable({ trades }) {
@@ -30,7 +31,12 @@ function TradesTable({ trades }) {
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-sm">
       <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <h2 className="text-lg font-semibold text-white">Recent Trades</h2>
+        <div className="flex items-center gap-2">
+          <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-2 text-sky-400">
+            <Table className="h-4 w-4" />
+          </div>
+          <h2 className="text-lg font-semibold text-white">Recent Trades</h2>
+        </div>
 
         <div className="flex flex-wrap gap-2">
           {['All', 'Winning Trades', 'Losing Trades'].map((option) => {

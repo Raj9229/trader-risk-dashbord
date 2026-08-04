@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { Activity } from 'lucide-react';
 import { formatCurrency } from '../utils/formatCurrency';
 
 function EquityChart({ data }) {
@@ -17,6 +18,9 @@ function EquityChart({ data }) {
         <div>
           <h2 className="text-lg font-semibold text-white">Equity Curve</h2>
           <p className="mt-1 text-sm text-slate-400">Performance trend overview</p>
+        </div>
+        <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-2 text-sky-400">
+          <Activity className="h-4 w-4" />
         </div>
       </div>
 

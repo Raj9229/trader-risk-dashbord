@@ -1,4 +1,4 @@
-import { DollarSign, Percent, Shield, TrendingDown, TrendingUp } from 'lucide-react';
+import { Percent, ShieldAlert, Trophy, Wallet, TrendingDown, TrendingUp } from 'lucide-react';
 import StatCard from './StatCard';
 import { formatCurrency, formatSignedCurrency } from '../utils/formatCurrency';
 
@@ -11,7 +11,7 @@ function StatsGrid({ stats }) {
       value: formatCurrency(stats.currentBalance),
       change: stats.currentBalance >= 100000 ? 'Above opening balance' : 'Tracking daily flow',
       changeType: 'positive',
-      icon: <DollarSign className="h-4 w-4" />,
+      icon: <Wallet className="h-4 w-4" />,
     },
     {
       title: 'Total PnL',
@@ -25,7 +25,7 @@ function StatsGrid({ stats }) {
       value: stats.winningTrades,
       change: 'Positive trade count',
       changeType: 'positive',
-      icon: <TrendingUp className="h-4 w-4" />,
+      icon: <Trophy className="h-4 w-4" />,
     },
     {
       title: 'Losing Trades',
@@ -39,14 +39,14 @@ function StatsGrid({ stats }) {
       value: formatSignedCurrency(stats.largestWin),
       change: 'Best single trade',
       changeType: 'positive',
-      icon: <DollarSign className="h-4 w-4" />,
+      icon: <TrendingUp className="h-4 w-4" />,
     },
     {
       title: 'Largest Losing Trade',
       value: formatSignedCurrency(stats.largestLoss),
       change: 'Largest draw from a trade',
       changeType: 'negative',
-      icon: <DollarSign className="h-4 w-4" />,
+      icon: <TrendingDown className="h-4 w-4" />,
     },
     {
       title: 'Win Rate',
@@ -60,7 +60,7 @@ function StatsGrid({ stats }) {
       value: stats.riskStatus,
       change: stats.riskStatus === 'Safe' ? 'Within limits' : stats.riskStatus === 'Approaching Limit' ? 'Watching drawdown closely' : 'Requires attention',
       changeType: stats.riskStatus === 'Safe' ? 'positive' : stats.riskStatus === 'Approaching Limit' ? 'neutral' : 'negative',
-      icon: <Shield className="h-4 w-4" />,
+      icon: <ShieldAlert className="h-4 w-4" />,
     },
   ];
 
