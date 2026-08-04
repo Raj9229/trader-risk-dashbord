@@ -20,7 +20,7 @@ function Dashboard() {
     largestWin: calculatedStats.largestWin,
     largestLoss: calculatedStats.largestLoss,
   };
-  const risk = calculateRisk(account, stats);
+  const risk = calculateRisk(account, stats, trades);
   const statsWithStatus = {
     ...stats,
     riskStatus: risk.riskStatus,
