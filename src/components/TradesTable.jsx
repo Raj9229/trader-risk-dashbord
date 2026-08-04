@@ -30,7 +30,7 @@ function TradesTable({ trades }) {
 
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-sm">
-      <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div className="flex flex-col gap-3 border-b border-slate-800 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
         <div className="flex items-center gap-2">
           <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-2 text-sky-400">
             <Table className="h-4 w-4" />
@@ -60,29 +60,29 @@ function TradesTable({ trades }) {
         </div>
       </div>
 
-      <div className="max-h-[320px] overflow-auto">
+      <div className="max-h-[280px] overflow-auto sm:max-h-[320px]">
         <table className="min-w-full text-left text-sm">
           <thead className="sticky top-0 z-10 bg-slate-950/95 text-slate-400">
             <tr>
-              <th className="px-4 py-3 font-medium sm:px-6">Asset</th>
-              <th className="px-4 py-3 font-medium sm:px-6">Position</th>
-              <th className="px-4 py-3 font-medium sm:px-6">Time</th>
-              <th className="px-4 py-3 font-medium sm:px-6">Status</th>
-              <th className="px-4 py-3 font-medium sm:px-6">PnL</th>
+              <th className="px-3 py-3 font-medium sm:px-6">Asset</th>
+              <th className="px-3 py-3 font-medium sm:px-6">Position</th>
+              <th className="px-3 py-3 font-medium sm:px-6">Time</th>
+              <th className="px-3 py-3 font-medium sm:px-6">Status</th>
+              <th className="px-3 py-3 font-medium sm:px-6">PnL</th>
             </tr>
           </thead>
           <tbody>
             {filteredRows.map((row, index) => (
               <tr key={`${row.asset}-${index}`} className="border-t border-slate-800 transition hover:bg-slate-800/70">
-                <td className="whitespace-nowrap px-4 py-3 text-white sm:px-6">{row.asset}</td>
-                <td className="whitespace-nowrap px-4 py-3 text-slate-300 sm:px-6">{row.position}</td>
-                <td className="whitespace-nowrap px-4 py-3 text-slate-400 sm:px-6">{row.date}</td>
-                <td className="whitespace-nowrap px-4 py-3 sm:px-6">
+                <td className="whitespace-nowrap px-3 py-3 text-white sm:px-6">{row.asset}</td>
+                <td className="whitespace-nowrap px-3 py-3 text-slate-300 sm:px-6">{row.position}</td>
+                <td className="whitespace-nowrap px-3 py-3 text-slate-400 sm:px-6">{row.date}</td>
+                <td className="whitespace-nowrap px-3 py-3 sm:px-6">
                   <span className={`rounded-full border px-2.5 py-1 text-xs font-medium ${row.status === 'Winner' ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400' : 'border-rose-500/20 bg-rose-500/10 text-rose-400'}`}>
                     {row.status}
                   </span>
                 </td>
-                <td className={`whitespace-nowrap px-4 py-3 font-medium sm:px-6 ${row.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                <td className={`whitespace-nowrap px-3 py-3 font-medium sm:px-6 ${row.pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
                   {formatSignedCurrency(row.pnl)}
                 </td>
               </tr>

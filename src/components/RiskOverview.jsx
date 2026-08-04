@@ -72,7 +72,7 @@ function RiskOverview({ risk }) {
   const badgeClass = getBadgeStyles(risk.riskStatus);
 
   return (
-    <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-4 shadow-sm sm:p-5 lg:p-6">
+    <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-3 shadow-sm sm:p-4 lg:p-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold text-white">Risk Overview</h2>
@@ -83,7 +83,7 @@ function RiskOverview({ risk }) {
         </span>
       </div>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-4 space-y-3 sm:mt-5">
         {items.map((item) => (
           <div key={item.label} className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-3">
             <div className="mb-2 flex items-center justify-between gap-3 text-sm">

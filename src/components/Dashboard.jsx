@@ -32,10 +32,10 @@ function Dashboard() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Header />
 
-      <main className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-3 py-3 sm:gap-5 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         <StatsGrid stats={statsWithStatus} />
 
-        <section className="grid gap-5 xl:grid-cols-2">
+        <section className="grid gap-4 lg:grid-cols-2 lg:gap-5">
           <RiskOverview risk={risk} />
           <EquityChart data={equityCurve} />
         </section>

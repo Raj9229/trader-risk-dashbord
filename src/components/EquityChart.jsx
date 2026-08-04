@@ -13,7 +13,7 @@ import { formatCurrency } from '../utils/formatCurrency';
 function EquityChart({ data }) {
 
   return (
-    <section className="flex h-[260px] flex-col rounded-2xl border border-slate-800 bg-slate-900/80 p-4 shadow-sm sm:h-[300px] sm:p-5 lg:h-[320px] lg:p-6">
+    <section className="flex h-[260px] flex-col rounded-2xl border border-slate-800 bg-slate-900/80 p-3 shadow-sm sm:h-[300px] sm:p-4 lg:h-[320px] lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-white">Equity Curve</h2>
@@ -24,7 +24,7 @@ function EquityChart({ data }) {
         </div>
       </div>
 
-      <div className="mt-4 min-h-0 flex-1 rounded-xl bg-slate-950/70 p-2 sm:p-3">
+      <div className="mt-3 min-h-0 flex-1 rounded-xl bg-slate-950/70 p-2 sm:mt-4 sm:p-3">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             <defs>
