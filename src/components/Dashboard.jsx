@@ -3,14 +3,25 @@ import StatsGrid from './StatsGrid';
 import RiskOverview from './RiskOverview';
 import EquityChart from './EquityChart';
 import TradesTable from './TradesTable';
+import trades from '../data/trades';
+import calculateStats from '../utils/calculateStats';
 
 function Dashboard() {
+  const stats = calculateStats(trades);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Header />
 
       <main className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        <StatsGrid />
+        <StatsGrid
+          totalPnL={stats.totalPnL}
+          winningTrades={stats.winningTrades}
+          losingTrades={stats.losingTrades}
+          winRate={stats.winRate}
+          largestWin={stats.largestWin}
+          largestLoss={stats.largestLoss}
+        />
 
         <section className="grid gap-6 lg:grid-cols-2">
           <RiskOverview />
